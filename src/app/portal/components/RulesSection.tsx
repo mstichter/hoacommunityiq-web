@@ -77,6 +77,13 @@ export default function RulesSection({ resident, onAskBoard }: { resident: any; 
       <h2 className="text-xl font-bold text-gray-900 mb-1">Rules Assistant</h2>
       <p className="text-gray-500 text-sm mb-6">Ask questions about HOA rules and get instant answers</p>
 
+      {onAskBoard && (
+        <button type="button" onClick={() => onAskBoard('')}
+          className="w-full bg-white border-2 border-[#1A5C38] text-[#1A5C38] py-3.5 rounded-xl font-semibold text-sm hover:bg-[#EAF3DE] transition-colors mb-6">
+          💬 Send a Question to the Board
+        </button>
+      )}
+
       {/* Document filter */}
       <div className="flex flex-wrap gap-2 mb-5">
         <button onClick={() => setSelectedDoc('all')}
@@ -91,7 +98,7 @@ export default function RulesSection({ resident, onAskBoard }: { resident: any; 
         ))}
       </div>
 
-      <form onSubmit={ask} className="mb-3">
+      <form onSubmit={ask} className="mb-6">
         <div className="flex gap-3">
           <input
             type="text"
@@ -106,15 +113,6 @@ export default function RulesSection({ resident, onAskBoard }: { resident: any; 
           </button>
         </div>
       </form>
-
-      {onAskBoard && (
-        <div className="flex items-center justify-end mb-6">
-          <button type="button" onClick={() => onAskBoard(question)}
-            className="text-sm text-[#1A5C38] font-medium hover:underline">
-            Can't find your answer? Ask the board directly →
-          </button>
-        </div>
-      )}
 
       {loading && (
         <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center text-gray-400 text-sm">
