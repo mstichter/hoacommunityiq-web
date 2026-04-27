@@ -9,8 +9,9 @@ import PoolSection        from './components/PoolSection'
 import DocumentsSection   from './components/DocumentsSection'
 import NewsletterSection  from './components/NewsletterSection'
 import MinutesSection     from './components/MinutesSection'
-import RulesSection       from './components/RulesSection'
-import ProfileSection     from './components/ProfileSection'
+import RulesSection          from './components/RulesSection'
+import ProfileSection        from './components/ProfileSection'
+import ContactBoardSection   from './components/ContactBoardSection'
 
 const CATEGORIES_MAINT = [
   { key:'common_area',label:'Common Area'},{ key:'roads',label:'Roads & Parking'},
@@ -35,6 +36,7 @@ const NAV = [
   { key:'arc',         label:'ARC Request',       icon:'🏗️', group:'requests' },
   { key:'bookings',    label:'Book Amenity',      icon:'🗓️', group:'requests' },
   { key:'rules',       label:'Rules Assistant',   icon:'📋', group:'tools' },
+  { key:'contact',     label:'Ask the Board',     icon:'💬', group:'tools' },
   { key:'profile',     label:'My Profile',        icon:'👤', group:'tools' },
 ]
 
@@ -46,6 +48,7 @@ export default function PortalPage() {
   const [section, setSection]     = useState('home')
   const [loading, setLoading]     = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [prefillQuestion, setPrefillQuestion] = useState('')
 
   // Home tab state
   const [announcements, setAnnouncements] = useState<any[]>([])
@@ -113,6 +116,7 @@ export default function PortalPage() {
   const handleSignOut = async () => { await supabase.auth.signOut(); window.location.href = '/portal/login' }
 
   const navigate = (key: string) => { setSection(key); setSidebarOpen(false) }
+  const askBoard = (question: string) => { setPrefillQuestion(question); setSection('contact'); setSidebarOpen(false) }
 
   if (loading) return (
     <div className="min-h-screen bg-[#F4F9F6] flex items-center justify-center">
@@ -415,7 +419,8 @@ export default function PortalPage() {
           {section === 'documents'   && <DocumentsSection   resident={resident} />}
           {section === 'newsletter'  && <NewsletterSection  resident={resident} />}
           {section === 'minutes'     && <MinutesSection     resident={resident} />}
-          {section === 'rules'       && <RulesSection       resident={resident} />}
+          {section === 'rules'       && <RulesSection       resident={resident} onAskBoard={askBoard} />}
+          {section === 'contact'     && <ContactBoardSection resident={resident} prefill={prefillQuestion} />}
           {section === 'profile'    && <ProfileSection     resident={resident} onUpdate={setResident} />}
         </main>
       </div>

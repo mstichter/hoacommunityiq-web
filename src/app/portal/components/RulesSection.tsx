@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { supabase, SUPABASE_URL, SUPABASE_ANON } from '../supabaseClient'
 
 
-export default function RulesSection({ resident }: { resident: any }) {
+export default function RulesSection({ resident, onAskBoard }: { resident: any; onAskBoard?: (question: string) => void }) {
   const [documents, setDocuments]   = useState<any[]>([])
   const [selectedDoc, setSelectedDoc] = useState('all')
   const [question, setQuestion]     = useState('')
@@ -13,7 +13,7 @@ export default function RulesSection({ resident }: { resident: any }) {
   const [error, setError]           = useState('')
 
   useEffect(() => {
-    supabase.from('documents').select('id, title, type').eq('hoa_id', resident.hoa_id)
+    supabase.from('documents').select('id, name, type').eq('hoa_id', resident.hoa_id)
       .then(({ data }) => setDocuments(data || []))
   }, [])
 
@@ -50,7 +50,7 @@ export default function RulesSection({ resident }: { resident: any }) {
     }
 
     if (chunks.length === 0) {
-      setAnswer("I couldn't find relevant information in the HOA documents. Try rephrasing your question.")
+      setAnswer("I couldn't find relevant information in the HOA documents. Try rephrasing your question, or ask the board directly.")
       setLoading(false)
       return
     }
@@ -86,12 +86,12 @@ export default function RulesSection({ resident }: { resident: any }) {
         {documents.map(d => (
           <button key={d.id} onClick={() => setSelectedDoc(d.id)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${selectedDoc===d.id ? 'bg-[#1A5C38] text-white border-[#1A5C38]' : 'bg-white text-gray-600 border-gray-200 hover:border-[#1A5C38]'}`}>
-            {d.title}
+            {d.name}
           </button>
         ))}
       </div>
 
-      <form onSubmit={ask} className="mb-6">
+      <form onSubmit={ask} className="mb-3">
         <div className="flex gap-3">
           <input
             type="text"
@@ -106,6 +106,15 @@ export default function RulesSection({ resident }: { resident: any }) {
           </button>
         </div>
       </form>
+
+      {onAskBoard && (
+        <div className="flex items-center justify-end mb-6">
+          <button type="button" onClick={() => onAskBoard(question)}
+            className="text-sm text-[#1A5C38] font-medium hover:underline">
+            Can't find your answer? Ask the board directly →
+          </button>
+        </div>
+      )}
 
       {loading && (
         <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center text-gray-400 text-sm">
@@ -132,6 +141,16 @@ export default function RulesSection({ resident }: { resident: any }) {
           )}
 
           <p className="text-xs text-gray-400 text-center">This is AI-generated guidance. Consult the full documents or your board for official decisions.</p>
+
+          {onAskBoard && (
+            <div className="bg-gray-50 rounded-2xl border border-gray-200 px-5 py-4 flex items-center justify-between gap-4">
+              <p className="text-sm text-gray-500">Still not sure? Ask the board directly.</p>
+              <button type="button" onClick={() => onAskBoard(question)}
+                className="flex-shrink-0 bg-[#1A5C38] text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#154d30] transition-colors">
+                Ask the Board →
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
