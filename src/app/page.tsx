@@ -20,7 +20,7 @@ export default function Home() {
           <a href="/login" className="text-sm font-semibold text-[#1A5C38] hover:underline">
             Board Login
           </a>
-          <a href="#contact" className="bg-[#1A5C38] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#154d30] transition-colors">
+          <a href="/onboard" className="bg-[#1A5C38] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#154d30] transition-colors">
             Get Started
           </a>
         </div>
@@ -39,8 +39,8 @@ export default function Home() {
           CommunityIQ gives your HOA a mobile app for residents and a web dashboard for your board — all connected in real time. No spreadsheets. No email chains. Just clarity.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#contact" className="bg-[#1A5C38] text-white px-8 py-4 rounded-xl text-base font-semibold hover:bg-[#154d30] transition-colors w-full sm:w-auto">
-            Request a Demo
+          <a href="/onboard" className="bg-[#1A5C38] text-white px-8 py-4 rounded-xl text-base font-semibold hover:bg-[#154d30] transition-colors w-full sm:w-auto">
+            Get Started Free
           </a>
           <a href="#features" className="border border-gray-200 text-gray-700 px-8 py-4 rounded-xl text-base font-semibold hover:border-gray-300 hover:bg-gray-50 transition-colors w-full sm:w-auto">
             See Features →
@@ -144,7 +144,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="block text-center border border-[#1A5C38] text-[#1A5C38] px-6 py-3 rounded-xl font-semibold hover:bg-[#EAF3DE] transition-colors">
+            <a href="/onboard" className="block text-center border border-[#1A5C38] text-[#1A5C38] px-6 py-3 rounded-xl font-semibold hover:bg-[#EAF3DE] transition-colors">
               Get Started
             </a>
           </div>
@@ -165,7 +165,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="block text-center bg-white text-[#1A5C38] px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-colors">
+            <a href="/onboard" className="block text-center bg-white text-[#1A5C38] px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-colors">
               Get Started
             </a>
           </div>
