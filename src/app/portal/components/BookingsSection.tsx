@@ -139,6 +139,17 @@ export default function BookingsSection({ resident }: { resident: any }) {
         <form onSubmit={submit} className="bg-white rounded-2xl border border-gray-200 p-6 space-y-5">
           {success && <div className="bg-[#EAF3DE] border border-[#1A5C38]/20 rounded-xl px-5 py-4 text-sm text-[#1A5C38] font-medium">✓ Booking request submitted! The board will confirm shortly.</div>}
 
+          <a href="https://sdcvfxontkwfvcezsilm.supabase.co/storage/v1/object/public/documents/pdfs/Clubhouse_Rental_Form.pdf"
+            target="_blank" rel="noreferrer"
+            className="flex items-center gap-3 bg-[#EEF4FF] border border-blue-200 rounded-xl px-4 py-3 hover:bg-blue-50 transition-colors">
+            <span className="text-2xl">📄</span>
+            <div className="flex-1">
+              <div className="text-sm font-semibold text-[#1D4ED8]">Download Rental Form</div>
+              <div className="text-xs text-gray-500">Printable PDF version</div>
+            </div>
+            <span className="text-[#1D4ED8] font-bold">↓</span>
+          </a>
+
           <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Amenity *</label>
             <div className="flex flex-wrap gap-2">
