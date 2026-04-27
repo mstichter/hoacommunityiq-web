@@ -45,6 +45,9 @@ export default function Home() {
           <a href="#features" className="border border-gray-200 text-gray-700 px-8 py-4 rounded-xl text-base font-semibold hover:border-gray-300 hover:bg-gray-50 transition-colors w-full sm:w-auto">
             See Features →
           </a>
+          <a href="/login" className="border border-[#1A5C38] text-[#1A5C38] px-8 py-4 rounded-xl text-base font-semibold hover:bg-[#EAF3DE] transition-colors w-full sm:w-auto">
+            Board Login →
+          </a>
         </div>
       </section>
 
