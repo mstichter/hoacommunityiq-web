@@ -10,6 +10,7 @@ import DocumentsSection   from './components/DocumentsSection'
 import NewsletterSection  from './components/NewsletterSection'
 import MinutesSection     from './components/MinutesSection'
 import RulesSection       from './components/RulesSection'
+import ProfileSection     from './components/ProfileSection'
 
 const CATEGORIES_MAINT = [
   { key:'common_area',label:'Common Area'},{ key:'roads',label:'Roads & Parking'},
@@ -34,6 +35,7 @@ const NAV = [
   { key:'arc',         label:'ARC Request',       icon:'🏗️', group:'requests' },
   { key:'bookings',    label:'Book Amenity',      icon:'🗓️', group:'requests' },
   { key:'rules',       label:'Rules Assistant',   icon:'📋', group:'tools' },
+  { key:'profile',     label:'My Profile',        icon:'👤', group:'tools' },
 ]
 
 const GROUP_LABELS: Record<string,string> = { community:'Community', requests:'Submit a Request', tools:'Tools' }
@@ -139,7 +141,7 @@ export default function PortalPage() {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-white/70 text-sm hidden sm:block">{resident?.full_name}</span>
+          <button onClick={() => navigate('profile')} className="text-white/80 text-sm hover:text-white transition-colors hidden sm:block">{resident?.full_name}</button>
           <button onClick={handleSignOut} className="text-white/60 text-sm hover:text-white transition-colors">Sign out</button>
         </div>
       </header>
@@ -414,6 +416,7 @@ export default function PortalPage() {
           {section === 'newsletter'  && <NewsletterSection  resident={resident} />}
           {section === 'minutes'     && <MinutesSection     resident={resident} />}
           {section === 'rules'       && <RulesSection       resident={resident} />}
+          {section === 'profile'    && <ProfileSection     resident={resident} onUpdate={setResident} />}
         </main>
       </div>
     </div>
