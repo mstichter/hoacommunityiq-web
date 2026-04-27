@@ -1,3 +1,5 @@
+import ContactForm from './components/ContactForm'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
@@ -168,39 +170,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to modernize your HOA?</h2>
           <p className="text-lg text-gray-500">Fill out the form and we'll be in touch within one business day.</p>
         </div>
-        <form className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-200 p-8 space-y-5">
-          <div className="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Your Name</label>
-              <input type="text" placeholder="Jane Smith" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#1A5C38] transition-colors" />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Email</label>
-              <input type="email" placeholder="jane@yourhoa.com" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#1A5C38] transition-colors" />
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">HOA / Community Name</label>
-            <input type="text" placeholder="The Parks of Carolina Forest" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#1A5C38] transition-colors" />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Number of Homes</label>
-            <select className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#1A5C38] transition-colors bg-white text-gray-700">
-              <option value="">Select range…</option>
-              <option>Under 50</option>
-              <option>50 – 150</option>
-              <option>150 – 500</option>
-              <option>500+</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Message (optional)</label>
-            <textarea rows={4} placeholder="Tell us about your community and what you're looking for…" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#1A5C38] transition-colors resize-none" />
-          </div>
-          <button type="submit" className="w-full bg-[#1A5C38] text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-[#154d30] transition-colors">
-            Send Message
-          </button>
-        </form>
+        <ContactForm />
       </section>
 
       {/* Footer */}
