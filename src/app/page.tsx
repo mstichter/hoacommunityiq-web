@@ -17,6 +17,9 @@ export default function Home() {
           <a href="#pricing" className="hover:text-[#1A5C38] transition-colors">Pricing</a>
         </div>
         <div className="flex items-center gap-3">
+          <a href="/portal/login" className="text-sm font-medium text-gray-600 hover:text-[#1A5C38] transition-colors">
+            Resident Portal
+          </a>
           <a href="/login" className="text-sm font-semibold text-[#1A5C38] hover:underline">
             Board Login
           </a>
