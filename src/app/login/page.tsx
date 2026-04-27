@@ -40,7 +40,7 @@ export default function LoginPage() {
     setError('')
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: DASHBOARD_URL,
+      redirectTo: 'https://hoacommunityiq.com/reset-password',
     })
 
     if (error) {
