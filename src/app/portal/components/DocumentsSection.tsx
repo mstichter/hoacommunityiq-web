@@ -29,7 +29,7 @@ export default function DocumentsSection({ resident }: { resident: any }) {
   const [loadingDoc, setLoadingDoc] = useState(false)
 
   useEffect(() => {
-    supabase.from('documents').select('*').eq('hoa_id', resident.hoa_id).order('title')
+    supabase.from('documents').select('id, name, type, pdf_url').eq('hoa_id', resident.hoa_id).order('name')
       .then(({ data }) => { setDocuments(data || []); setLoading(false) })
   }, [])
 
@@ -65,7 +65,7 @@ export default function DocumentsSection({ resident }: { resident: any }) {
         <div className="space-y-2">
           {documents.length === 0 && <div className="bg-white rounded-2xl border border-gray-200 p-12 text-center text-gray-400 text-sm">No documents available.</div>}
           {documents.map(doc => {
-            const c = docColor(doc.type || doc.title)
+            const c = docColor(doc.type || doc.name || '')
             return (
               <button key={doc.id} onClick={() => openDoc(doc)}
                 className="w-full bg-white rounded-2xl border border-gray-100 px-5 py-4 flex items-center gap-4 hover:border-[#1A5C38] hover:shadow-sm transition-all text-left">
@@ -73,7 +73,7 @@ export default function DocumentsSection({ resident }: { resident: any }) {
                   📄
                 </div>
                 <div className="flex-1">
-                  <div className="font-semibold text-gray-900 text-sm">{doc.title}</div>
+                  <div className="font-semibold text-gray-900 text-sm">{doc.name}</div>
                   {doc.description && <div className="text-xs text-gray-400 mt-0.5">{doc.description}</div>}
                 </div>
                 <span className="text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0" style={{ background: c.bg, color: c.color }}>
