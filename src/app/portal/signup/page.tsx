@@ -19,7 +19,7 @@ export default function PortalSignupPage() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError]         = useState('')
-  const searchTimeout = useRef<NodeJS.Timeout>()
+  const searchTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   useEffect(() => {
     if (!hoaQuery.trim() || selectedHoa) { setHoaResults([]); return }
